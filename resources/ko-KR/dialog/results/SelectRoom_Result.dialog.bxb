@@ -1,0 +1,7 @@
+dialog (Result) {
+  match: Room (this) {
+    from-output: SelectRoom (action)
+  }
+
+  // template ("#{value(action.roomName)} 정보입니다.")
+}

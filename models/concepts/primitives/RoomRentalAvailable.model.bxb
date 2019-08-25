@@ -1,0 +1,3 @@
+boolean (RoomRentalAvailable) {
+  description (방 대실 예약 가능 여부)
+}

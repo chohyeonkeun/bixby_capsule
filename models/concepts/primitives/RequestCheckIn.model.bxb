@@ -1,0 +1,3 @@
+text (RequestCheckIn) {
+  description (사용자가 희망하는 체크인 시간 / request(2019-08-22+00:00:00) --> 서버에서 숙소별 체크인 시간 자동 설정)
+}

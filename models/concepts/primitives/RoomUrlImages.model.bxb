@@ -1,0 +1,4 @@
+structure (RoomUrlImages) {
+  description (방 이미지 url - 여러개)
+  extends (viv.core.BaseImage)
+}

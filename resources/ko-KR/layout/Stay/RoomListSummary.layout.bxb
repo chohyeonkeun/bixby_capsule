@@ -1,0 +1,23 @@
+layout-macro-def (room-list-summary) {
+  params {
+    param (room) {
+      type (Room)
+      min (Required) max (Many)
+    }
+  }
+  content {
+    image-card {
+      aspect-ratio (16:9)
+      image-url ("[#{value(room.roomUrlImage[0])}]")
+      title-area {
+        halign (Start)
+        slot1 {
+          text {
+            value ("#{value(room.roomName)}")
+            style (Title_L)
+          }
+        }
+      }
+    }
+  }
+}

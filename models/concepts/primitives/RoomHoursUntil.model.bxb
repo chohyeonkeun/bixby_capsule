@@ -1,0 +1,4 @@
+integer (RoomHoursUntil) {
+  description (방 대실 이용 마감시간)
+
+}

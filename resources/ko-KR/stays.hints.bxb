@@ -1,0 +1,10 @@
+hints {
+  uncategorized {
+    utterance (수영장 있는 호텔 찾아줘)
+    utterance (파티할 수 있는 호텔 찾아줘)
+    utterance (종로에 할인 많이 되는 호텔 찾아줘)
+    utterance (성수 주변에 신축 모텔 찾아줘)
+    utterance (가평에 바베큐 해먹을 수 있는 펜션 찾아줘)
+    utterance (강남역 근처 모텔 중에 가격 낮은순으로 보여줘)
+  }
+}

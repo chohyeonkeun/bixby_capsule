@@ -1,0 +1,4 @@
+integer (StayDaysCheckIn) {
+  description (숙소 숙박 체크인 가능시간)
+  
+}

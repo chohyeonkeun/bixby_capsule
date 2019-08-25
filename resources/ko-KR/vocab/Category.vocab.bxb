@@ -1,0 +1,32 @@
+vocab(Category) {
+  "모텔" {
+    "Motel"
+    "Motels"
+    "모텔"
+  }
+  "호텔" {
+    "Hotel"
+    "Hotels"
+    "호텔"
+  }
+  "리조트" {
+    "Resort"
+    "Resorts"
+    "리조트"
+  }
+  "펜션" {
+    "Pension"
+    "Pensions"
+    "펜션"
+  }
+  "풀빌라" {
+    "PoolVilla"
+    "PoolVillas"
+    "풀빌라"
+  }
+  "게스트하우스" {
+    "GuestHouse"
+    "GuestHouses"
+    "게스트하우스"
+  }
+}

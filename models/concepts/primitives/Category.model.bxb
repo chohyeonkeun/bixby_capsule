@@ -1,0 +1,9 @@
+enum (Category) {
+  description (숙소 종류)
+  symbol (호텔)
+  symbol (리조트)
+  symbol (모텔)
+  symbol (펜션)
+  symbol (풀빌라)
+  symbol (게스트하우스)
+}

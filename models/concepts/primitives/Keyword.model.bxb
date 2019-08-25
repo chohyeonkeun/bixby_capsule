@@ -1,0 +1,3 @@
+name (Keyword) {
+  description (키워드 ex. 역삼동, 호텔 발리, 수영장, 강남역 / request(searchKeyword))
+}

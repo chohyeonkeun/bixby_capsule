@@ -1,0 +1,15 @@
+input-view {
+  match: DateInterval (this)
+  message (어느 날짜에 예약하고 싶으신가요?)
+  render {
+    calendar {
+      initial-value (now().date) // today is the default, so this isn't required
+      allow-range (true) // support date-intervals
+      restrictions {
+        // can also list "allowed-dates" instead, e.g., allowed-dates (action.myAllowedDates)
+        // blocked-dates (action.restrictedDates) // contains list of dates 
+        block-past-dates (true) // block selection of days before today
+      }
+    }
+  }
+}

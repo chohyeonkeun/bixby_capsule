@@ -1,0 +1,4 @@
+text (StaySaleDaysPrice) {
+  description (숙소 목록에서 조회될 숙박비가 가장 저렴한 방의 할인 숙박 예약가)
+  
+}

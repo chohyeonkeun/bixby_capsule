@@ -1,0 +1,19 @@
+dialog (Result) {
+  match: Stay (this) {
+    from-output: FindStay (action)
+  }
+  
+  if (exists(action.priceLow)) {
+    template("숙박 예약가 낮은 순으로 정렬하였습니다.")
+  } else-if (exists(action.priceHigh)){
+    template("숙박 예약가 높은 순으로 정렬하였습니다.")
+  } else-if (exists(action.review)){
+    template("평점 및 후기 많은 순으로 정렬하였습니다.")
+  } else-if (exists(action.wish)){
+    template("좋아요 많은 순으로 정렬하였습니다.")
+  }
+
+
+    
+  template ("원하는 조건을 만족하는 숙소 총 #{size(this)}건이 검색되었습니다.")
+}

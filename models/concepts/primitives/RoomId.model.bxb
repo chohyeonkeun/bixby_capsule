@@ -1,0 +1,3 @@
+integer (RoomId) {
+  description (방 고유 id)
+}

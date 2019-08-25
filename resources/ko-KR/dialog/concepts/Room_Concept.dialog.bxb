@@ -1,0 +1,11 @@
+dialog (Concept) {
+  match: Room (this)
+  switch (plural(this)) {
+    case (One) {
+      template (room)
+    }
+    default {
+      template (rooms)
+    }
+  }
+}

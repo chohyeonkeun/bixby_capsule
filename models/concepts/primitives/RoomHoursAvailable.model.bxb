@@ -1,0 +1,3 @@
+integer (RoomHoursAvailable) {
+  description (방 대실 이용가능 시간)
+}

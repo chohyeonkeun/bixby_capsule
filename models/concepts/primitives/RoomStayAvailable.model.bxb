@@ -1,0 +1,3 @@
+boolean (RoomStayAvailable) {
+  description (방의 숙박 가능여부)
+}

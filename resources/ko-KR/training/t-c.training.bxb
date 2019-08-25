@@ -1,0 +1,5 @@
+train (t-ciemn1d9go91t8tvbkibjeoam) {
+  utterance ("[g:FindStay] (역삼역)[v:Keyword] 근처 (모텔)[v:Category:모텔] 찾아줘")
+  plan (Y2BlEMzKzyst1itOTSxKztALLkmsZBBFEXLLzEvBIuycWJKanl9UySCJIuwCFPbMK0ktKkvMYRBBkfJOrSzPL0phYGFgZGBiYAbSDEAWBMIAM1gOKAMA)
+  last-modified (1566661873171)
+}

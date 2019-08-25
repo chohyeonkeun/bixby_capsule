@@ -1,0 +1,11 @@
+dialog (Concept) {
+  match: Stay (this)
+  switch (plural(this)) {
+    case (One) {
+      template (stay)
+    }
+    default {
+      template (stays)
+    }
+  }
+}

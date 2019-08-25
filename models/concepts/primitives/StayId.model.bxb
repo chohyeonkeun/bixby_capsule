@@ -1,0 +1,4 @@
+integer (StayId) {
+  description (숙소 고유 id)
+  
+}

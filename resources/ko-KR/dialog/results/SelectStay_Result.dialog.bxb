@@ -1,0 +1,7 @@
+dialog (Result) {
+  match: Stay (this) {
+    from-output: SelectStay (action)
+  }
+
+  // template ("#{value(action.stayName)} 정보입니다.")
+}

@@ -1,0 +1,16 @@
+endpoints {
+  action-endpoints {
+    action-endpoint (FindStay) {
+      accepted-inputs (keyword, category, priceLow, priceHigh, review, wish, dateInterval)
+      local-endpoint (FindStay.js)
+    }
+    action-endpoint (SelectStay) {
+      accepted-inputs (keyword, category)
+      local-endpoint (SelectStay.js)
+    }
+    action-endpoint (SelectRoom) {
+      accepted-inputs (stayName, roomName)
+      local-endpoint (SelectRoom.js)
+    }
+  }
+}

@@ -1,0 +1,74 @@
+structure (Stay) {
+  description (accommodation information)
+  property (stayId) {
+    description (숙소 id)
+    min (Required)
+    type (StayId)
+  }
+  property (stayName) {
+    description (숙소 이름)
+    min (Required)
+    type (StayName)
+  }
+  property (stayMainUrlImage) {
+    description (숙소 메인 이미지)
+    type (StayMainUrlImage)
+    min (Required)    
+  }
+  property (stayHoursPrice) {
+    description (해당 숙소의 대실 최저 예약가)
+    min (Required)
+    type (StayHoursPrice)
+  }
+  property (stayHoursAvailable) {
+    description (대실 최대 이용 시간)
+    min (Required)
+    type (StayHoursAvailable)
+  }
+  property (stayLocation) {
+    description (숙소 주소)
+    min (Required)
+    type (StayLocation)
+  }
+  property (stayDirections) {
+    description (숙소 간략 위치)
+    type (StayDirections)
+    min (Required)
+  }
+  property (stayDaysPrice) {
+    description (숙박 예약가)
+    type (StayDaysPrice)
+    min (Required)
+  }
+  property (stayIntroduce) {
+    description (숙소 소개)
+    type (StayIntroduce)
+    min (Required)
+  }
+  property (staySaleDaysPrice) {
+    description (숙소 목록에서 조회될 숙박비가 가장 저렴한 방의 숙박 할인 예약가)
+    type (StaySaleDaysPrice)
+    min (Optional)
+  }
+  property (staySaleHoursPrice) {
+    description (숙소 목록에서 조회될 대실비가 가장 저렴한 방의 대실 할인 예약가)
+    type (StaySaleHoursPrice)
+    min (Optional)
+  }
+  property (stayDaysCheckIn) {
+    description (숙박 체크인 가능 시간)
+    type (StayDaysCheckIn)
+    min (Required)
+  }
+  property (room) {
+    description (숙소의 방 객체들)
+    min (Required)
+    type(Room)
+  }
+  property (dateInterval) {
+    description (사용자가 요청한 체크인/체크아웃 시간)
+    type (DateInterval)
+    min (Required)
+  }
+
+}

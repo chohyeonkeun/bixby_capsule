@@ -1,0 +1,29 @@
+layout-macro-def (stay-list-summary) {
+  params {
+    param (stay) {
+      type (Stay)
+      min (Required) max (Many)
+    }
+  }
+  content {
+    image-card {
+      aspect-ratio (16:9)
+      image-url ("[#{value(stay.stayMainUrlImage[0])}]")
+      title-area {
+        halign (Start)
+        slot1 {
+          text {
+            value ("#{value(stay.stayName)}")
+            style (Title_L)
+          }
+        }
+      }
+      on-click {
+        intent {
+          goal : SelectStay
+          // value : stay.stayName(에러..)
+        }
+      }
+    }
+  }
+}

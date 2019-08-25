@@ -1,0 +1,3 @@
+text (StayDaysPrice) {
+  description (숙소 목록 화면에서 조회되는 숙박 예약가)
+}

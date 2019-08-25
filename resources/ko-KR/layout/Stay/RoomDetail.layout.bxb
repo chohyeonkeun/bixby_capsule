@@ -1,0 +1,50 @@
+layout-macro-def (room-detail) {
+  params {
+    param (room) {
+      type (Room)
+      min (Required) max (One)
+    }
+  }
+  content {
+    section {
+      content {
+        image-carousel {
+          images (room.roomUrlImages)
+        }
+        title-area {
+          halign (Center)
+          // •
+          slot1 {
+            text {
+              value ("#{value(room.roomName)}")
+              style (Title_L)
+            }
+          }
+          slot2 {
+            single-line {
+              text {
+                value ("#{value(room.stayName)}")
+                style (Detail_M_Soft)
+              }
+            }
+          }
+        }
+        if (room.roomHoursAvailable > 0 && room.roomHoursUntil > 0) {
+          paragraph {
+            value ("대실: #{value(room.roomHoursAvailable)}시간 이용 가능, #{value(room.roomHoursPrice)}원, #{value(room.roomHoursUntil)}시 마감")
+            style (Detail_M)
+          }
+        }
+        if (room.roomRentalAvailable && room.roomRentalAvailable == false) {
+          paragraph {
+            value ("대실 이용 불가")
+          }
+        }
+        paragraph {
+          value ("숙박: #{value(room.roomDaysPrice)}원")
+          style (Detail_M)
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,4 @@
+integer (RoomDaysCheckOut) {
+  description (방 숙박 체크아웃 마감시간)
+  
+}

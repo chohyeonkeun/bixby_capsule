@@ -1,0 +1,103 @@
+structure (Room) {
+  description (room detail)
+  property (stayName) {
+    description (해당 방이 속한 숙소 이름)
+    min (Required)
+    type (StayName)
+  }
+  property (stayId) {
+    description (해당 방이 속한 숙소 id)
+    min (Required)
+    type (StayId)
+  }
+  property (roomName) {
+    description (방 이름)
+    min (Required)
+    type (RoomName)
+  }
+  property (roomId) {
+    description (방 id)
+    min (Required)
+    type (RoomId)
+  }
+  property (roomMaximumPersonnel){
+    description (수용 가능한 최대인원)
+    type (RoomMaximumPersonnel)
+    min (Required) max (One)
+  }
+  property (roomStandardPersonnel) {
+    description (수용 가능한 기준인원)
+    type (RoomStandardPersonnel)
+    min (Required) max (One)
+  }
+  property (roomUrlImages) {
+    description (방 이미지들)
+    type (RoomUrlImages)
+    min (Required) max (Many)    
+  }
+  property (roomUrlImage) {
+    description (방 대표 이미지)
+    type (RoomUrlImage)
+    min (Required) max (Many)
+  }
+  property (roomHoursPrice) {
+    description (방의 대실 예약가)
+    min (Required)
+    type (RoomHoursPrice)
+  }
+  property (roomHoursAvailable) {
+    description (방 대실 최대 이용 시간)
+    min (Required)
+    type (RoomHoursAvailable)
+  }
+  property (roomDaysPrice) {
+    description (방 숙박 예약가)
+    type (RoomDaysPrice)
+    min (Required)
+  }
+  property (roomSaleDaysPrice) {
+    description (방 숙박 할인 예약가)
+    type (RoomSaleDaysPrice)
+    min (Optional)
+  }
+  property (roomSaleHoursPrice) {
+    description (방 대실 할인 예약가)
+    type (RoomSaleHoursPrice)
+    min (Optional)
+  }
+  property (roomDaysCheckIn) {
+    description (방 숙박 체크인 가능시간)
+    type (RoomDaysCheckIn)
+    min (Required)
+  }
+  property (roomDaysCheckOut) {
+    description (방 숙박 체크아웃 마감시간)
+    type (RoomDaysCheckOut)
+    min (Required)
+  }
+  property (roomHoursUntil) {
+    description (방 대실 마감시간)
+    type (RoomHoursUntil)
+    min (Optional)
+  } 
+  property (roomRentalAvailable) {
+    description (방 대실 예약 가능 여부)
+    type (RoomRentalAvailable)
+    min (Optional)
+  }
+  property (roomStayAvailable) {
+    description (방 숙박 가능 여부)
+    type (RoomStayAvailable)
+    min (Required)
+  }
+  property (roomReservedList) {
+    description (해당 방의 예약된 날짜)
+    type (RoomReservedList)
+    min (Optional)
+  }
+  property (dateInterval) {
+    description (사용자가 요청한 체크인/체크아웃 시간)
+    type (DateInterval)
+    min (Required)
+  }
+}

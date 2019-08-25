@@ -1,0 +1,6 @@
+dialog (NoResult) {
+  match: Room (this) {
+    from-output: SelectRoom (action)
+  }
+  template("방을 찾을 수 없습니다.")
+}

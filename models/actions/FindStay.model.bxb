@@ -1,0 +1,51 @@
+action (FindStay) {
+  type (Search)
+  description (사용자가 원하는 숙소들 검색)
+  collect {
+    input (keyword) {
+      type (Keyword)
+      min (Optional) max (One)
+    }
+    input (category) {
+      type (Category)
+      min (Optional) max (One)
+    }
+    input (priceLow) {
+      type (PriceLow)
+      min (Optional) max (One)
+    }
+    input (priceHigh) {
+      type (PriceHigh)
+      min (Optional) max (One)
+    }
+    input (review) {
+      type (Review)
+      min (Optional) max (One)
+    }
+    input (wish) {
+      type (Wish)
+      min (Optional) max (One)
+    }
+    input (dateInterval) {
+      type (DateInterval)
+      min (Required)
+      default-init {
+        intent { // Prompt for the interval
+          goal: GetDateInterval
+        }
+      }
+    }
+  }
+  output (Stay) {
+    on-empty {
+      replan {
+        dialog {
+          template ("원하는 조건에 맞는 숙소를 찾을 수 없어요. 다른 조건으로 검색해보시겠어요?")
+        }
+        intent {
+          goal: FindStay
+        }
+      }
+    }
+  }
+}

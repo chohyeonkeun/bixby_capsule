@@ -1,0 +1,4 @@
+structure (StayIntroduce) {
+  description (숙소 소개)
+  
+}

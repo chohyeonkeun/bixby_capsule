@@ -1,0 +1,3 @@
+boolean (PriceHigh) {
+  description (예약가 높은 순 정렬)
+}

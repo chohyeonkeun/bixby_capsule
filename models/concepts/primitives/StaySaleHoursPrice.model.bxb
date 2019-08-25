@@ -1,0 +1,4 @@
+text (StaySaleHoursPrice) {
+  description (숙소 목록에서 조회될 숙박비가 가장 저렴한 방의 대실 할인 예약가)
+  
+}
