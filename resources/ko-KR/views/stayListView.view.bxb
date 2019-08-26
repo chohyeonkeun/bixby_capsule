@@ -17,7 +17,14 @@ result-view {
         template ("좋아요 많은 순으로 보여줘")
     }
   }
-  
+  message {
+    if (size(result) == 1) {
+      template ("#{value(result.stayName)} 숙소에 대한 정보입니다.")
+    } else {      
+      template ("원하는 숙소를 선택해보세요.")
+    }
+  }
+
   render {
     if (size(result) > 1) {
       list-of (result) {
