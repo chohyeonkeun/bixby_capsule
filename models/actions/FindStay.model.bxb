@@ -44,6 +44,7 @@ action (FindStay) {
         }
         intent {
           goal: FindStay
+          value: $expr (dateInterval)
         }
       }
     }

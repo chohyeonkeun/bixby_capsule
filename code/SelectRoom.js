@@ -1,42 +1,44 @@
-module.exports.function = function selectRoom (stayName, roomName) {
+module.exports.function = function selectRoom (roomId, startDate, endDate) {
   var http = require('http')
   var console = require('console')
   var dates = require('dates')
 
-  var response = http.getUrl('http://api.yanoljamvp.com/api/stay/',{
-    format: 'json',
-    query: {
-      keyword: stayName,
-      requestCheckIn : start,
-      requestCheckOut : end,
-    }
-  })
-  const staysInfo = response.parsed
-  for(var i = 0; i < staysInfo.length; i++){
-    if (staysInfo[i].stay == stayName) {
-      var stayId = staysInfo[i].stayId
-    }
+  // start = '2019-08-22+00:00:00'
+  start = dates.ZonedDateTime.fromDate(startDate.date).getDateTime().date
+  startYear = String(start.year);
+  if (String(start.month).length == 1){
+    startMonth = "0"+String(start.month);
   }
-
-  response = http.getUrl('http://api.yanoljamvp.com/api/stay/{stayId}/room/', {
-    format: 'json',
-    query: {
-      stayId : stayId,
-    }  
-  })
-  const roomsInfo = response.parsed
-  for (i = 0; i < response.length; i++){
-    if (roomsInfo[i].name == roomName){
-      var roomId = roomsInfo[i].roomId
-    }
+  else{
+    startMonth = String(start.month);
   }
+  if (String(start.day).length == 1){
+    startDay = "0"+String(start.day);
+  }
+  else {
+    startDay = String(start.day);
+  }
+  start = startYear + '-' + startMonth + '-' + startDay + '+00:00:00'
 
-  var response = http.getUrl('api.yanoljamvp.com/api/stay/room/detail/<roomId>/', {
-    format: 'json',
-    query: {
-      roomId : roomId,
-    }
-  })
+  // end = '2019-08-23+00:00:00'
+  end = dates.ZonedDateTime.fromDate(endDate.date).getDateTime().date
+  endYear = String(end.year);
+  if (String(end.month).length == 1){
+    endMonth = "0"+String(end.month);
+  }
+  else{
+    endMonth = String(end.month);
+  }
+  if (String(end.day).length == 1){
+    endDay = "0"+String(end.day);
+  }
+  else {
+    endDay = String(end.day);
+  }
+  end = endYear + '-' + endMonth + '-' + endDay + '+00:00:00'
+
+  var response = http.getUrl('api.yanoljamvp.com/api/stay/room/detail/'+roomId+'/?requestCheckIn='+start+'&requestCheckOut='+end, {format: 'json'})
+  
   const roomInfo = response.parsed
   
   if (roomInfo.hoursAvailable == 0){
@@ -63,5 +65,9 @@ module.exports.function = function selectRoom (stayName, roomName) {
     roomRentalAvailable: roomRentalAvailable, //boolean
     roomStayAvailable: roomInfo.stayAvailable,// boolean
     roomReservedList: roomInfo.reservedList, // array
+    dateInterval : {
+      start: start,
+      end: end,
+    } 
   }
 }

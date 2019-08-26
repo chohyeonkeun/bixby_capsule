@@ -2,25 +2,18 @@ action (SelectStay) {
   type (Search)
   description (사용자가 원하는 숙소 상세 페이지 이동)
   collect {
-    input (keyword) {
-      type (Keyword)
-      min (Optional) max (One)
+    input (stayId) {
+      type (StayId)
+      min (Required) max (One)
     }
-    input (category) {
-      type (Category)
-      min (Optional) max (One)
+    input (startDate) {
+      type (StartDate)
+      min (Required) max (One)
     }
-  }
-  output (Stay) {
-    on-empty {
-      replan {
-        dialog {
-          template ("숙소를 찾을 수 없어요. 정확한 이름으로 다시 한번 알려주시겠어요?")
-        }
-        intent {
-          goal: FindStay
-        }
-      }
+    input (endDate) {
+      type (EndDate)
+      min (Required) max (One)
     }
   }
+  output (Stay) 
 }

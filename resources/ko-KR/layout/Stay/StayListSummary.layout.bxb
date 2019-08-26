@@ -8,7 +8,7 @@ layout-macro-def (stay-list-summary) {
   content {
     image-card {
       aspect-ratio (16:9)
-      image-url ("[#{value(stay.stayMainUrlImage[0])}]")
+      image-url ("#{value(stay.stayMainUrlImage)}")
       title-area {
         halign (Start)
         slot1 {
@@ -16,12 +16,6 @@ layout-macro-def (stay-list-summary) {
             value ("#{value(stay.stayName)}")
             style (Title_L)
           }
-        }
-      }
-      on-click {
-        intent {
-          goal : SelectStay
-          // value : stay.stayName(에러..)
         }
       }
     }

@@ -3,7 +3,7 @@ capsule-info {
   developer-name  (숙소 검색)
   icon-asset (/images/yanoljamvp.ico)
   description ("고객이 원하는 숙소를 검색할 수 있는 capsule 입니다")
-  website-url (https://github.com/chohyeonkeun/) 
+  website-url (https://github.com/chohyeonkeun/bixby_capsule) 
   dispatch-name (숙소 검색)
   dispatch-aliases {
     alias (숙소검색)

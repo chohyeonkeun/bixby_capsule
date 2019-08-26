@@ -1,37 +1,44 @@
-module.exports.function = function selectStay (keyword, category) {
+module.exports.function = function selectStay (stayId, startDate, endDate) {
   var http = require('http')
   var console = require('console')
   var dates = require('dates')
 
+  // start = '2019-08-22+00:00:00'
+  start = dates.ZonedDateTime.fromDate(startDate.date).getDateTime().date
+  startYear = String(start.year);
+  if (String(start.month).length == 1){
+    startMonth = "0"+String(start.month);
+  }
+  else{
+    startMonth = String(start.month);
+  }
+  if (String(start.day).length == 1){
+    startDay = "0"+String(start.day);
+  }
+  else {
+    startDay = String(start.day);
+  }
+  start = startYear + '-' + startMonth + '-' + startDay + '+00:00:00'
 
-  var url = 'http://api.yanoljamvp.com/api/stay/?requestCheckIn='+start+'&requestCheckOut='+end;
-  if (keyword) {
-    url = url + '&searchKeyword=' + keyword
+  // end = '2019-08-23+00:00:00'
+  end = dates.ZonedDateTime.fromDate(endDate.date).getDateTime().date
+  endYear = String(end.year);
+  if (String(end.month).length == 1){
+    endMonth = "0"+String(end.month);
   }
-  if (category) {
-    url = url + '&category=' + category
+  else{
+    endMonth = String(end.month);
   }
-  if (priceLow) {
-    url = url + '&priceLow=' + priceLow
+  if (String(end.day).length == 1){
+    endDay = "0"+String(end.day);
   }
-  if (priceHigh) {
-    url = url + '&priceHigh=' + priceHigh
+  else {
+    endDay = String(end.day);
   }
-  console.log(url)
+  end = endYear + '-' + endMonth + '-' + endDay + '+00:00:00'
 
-  var response = http.getUrl(url, {format: 'json'});
-  
-  const staysInfo = response.parsed
 
-  let result = []
-  for(var i = 0; i < staysInfo.length; i++){    
-    // 숙소 이름을 keyword로 하여 input 으로 받아올 때, 그 이름과 일치하는 객체의 stayId를 받아온다. --> stayId에 대한 방 전체 리스트를 가져오기 위함
-    if (keyword == staysInfo[i].name) {
-      stayId = staysInfo[i].stayId
-    }
-  }
-  
-  response = http.getUrl('api.yanoljamvp.com/api/stay/detail/'+stayId+'/', {format: 'json'})
+  var response = http.getUrl('api.yanoljamvp.com/api/stay/detail/'+stayId+'/', {format: 'json'})
 
   const stayInfo = response.parsed
 
@@ -65,9 +72,9 @@ module.exports.function = function selectStay (keyword, category) {
     stayIntroduce : stayInfo.introduce,
     room : roomsResult,
     dateInterval : {
-      start: dates.ZonedDateTime.fromDate(dateInterval.start).getDateTime().date,
-      end: dates.ZonedDateTime.fromDate(dateInterval.end).getDateTime().date
-    }
+      start: start,
+      end: end,
+    } 
   }
 
 

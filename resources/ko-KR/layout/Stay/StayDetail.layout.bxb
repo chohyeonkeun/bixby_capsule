@@ -2,13 +2,13 @@ layout-macro-def (stay-detail) {
   params {
     param (stay) {
       type (Stay)
-      min (Required) max (One)
+      min (Required)
     }
   }
   content {
     section {
       content {
-        image (stay.stayMainUrlImage[0])
+        image ("#{value(stay.stayMainUrlImage)}")
         title-area {
           halign (Center)
           // •
@@ -25,8 +25,32 @@ layout-macro-def (stay-detail) {
                 style (Detail_M_Soft)
               }
             }
+          }         
+        }
+        input-cell {
+          label {
+            template ("Dates")          
           }
-        }        
+          value ("[#{value(stay.dateInterval)}]")
+          on-click {
+            intent {
+              goal: SelectStay          
+              route: GetDateInterval      
+              value: $expr (stay.stayId)
+              value: $expr (stay.dateInterval.start)
+              value: $expr (stay.dateInterval.end)                      
+            }
+          }
+        }
+        for-each (stay.room) {
+          as (attribute) {
+            layout-macro (room-list-summary) {
+              param (room) {
+                expression(attribute)
+              }
+            }
+          }
+        }
       }
     }
   }

@@ -1,10 +1,7 @@
-layout-macro-def (room-detail) {
-  params {
-    param (room) {
-      type (Room)
-      min (Required) max (One)
-    }
-  }
+layout {
+  match: Room (room)
+  mode (Details)
+
   content {
     section {
       content {
@@ -13,7 +10,6 @@ layout-macro-def (room-detail) {
         }
         title-area {
           halign (Center)
-          // •
           slot1 {
             text {
               value ("#{value(room.roomName)}")
@@ -29,20 +25,53 @@ layout-macro-def (room-detail) {
             }
           }
         }
-        if (room.roomHoursAvailable > 0 && room.roomHoursUntil > 0) {
-          paragraph {
-            value ("대실: #{value(room.roomHoursAvailable)}시간 이용 가능, #{value(room.roomHoursPrice)}원, #{value(room.roomHoursUntil)}시 마감")
-            style (Detail_M)
+      }
+    }
+    section {
+      content {
+        input-cell {
+          label {
+            template ("Dates")          
+          }
+          value ("[#{value(room.dateInterval)}]")
+          on-click {
+            intent {
+              goal: SelectRoom          
+              route: GetDateInterval
+              value: $expr (room.roomId)
+              value: $expr (room.dateInterval.start)
+              value: $expr (room.dateInterval.end)              
+            }
           }
         }
-        if (room.roomRentalAvailable && room.roomRentalAvailable == false) {
-          paragraph {
-            value ("대실 이용 불가")
+      }
+    }
+    section {
+      title (이용 관련)
+      content {      
+        partitioned {
+          content {
+            if (room.roomHoursAvailable > 0 && room.roomHoursUntil > 0 && room.roomRentalAvailable){
+              paragraph {              
+                value ("대실: #{value(room.roomHoursPrice)}원, 최대 #{value(room.roomHoursAvailable)}시간, #{value(room.roomHoursUntil)}:00 까지")
+                style (Detail_M)
+              } 
+            } else-if (room.roomHoursAvailable > 0 && room.roomHoursUntil > 0 && !room.roomRentalAvailable) {
+              paragraph {
+                value ("대실: 예약마감")
+                style (Detail_M)
+              }
+            } else {
+              paragraph {
+                value ("대실: 이용불가")
+                style (Detail_M)
+              }
+            }
+            paragraph {
+              value ("숙박: #{value(room.roomDaysPrice)}원, 체크인 #{value(room.roomDaysCheckIn)}부터, 체크아웃 #{value(room.roomDaysCheckOut)}까지")
+              style (Detail_M)
+            }
           }
-        }
-        paragraph {
-          value ("숙박: #{value(room.roomDaysPrice)}원")
-          style (Detail_M)
         }
       }
     }

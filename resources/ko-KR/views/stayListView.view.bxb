@@ -19,16 +19,23 @@ result-view {
   }
   
   render {
-    list-of (result) {
-      has-details (true)
-
-      where-each (item) {
-        layout-macro (stay-list-summary) {
-          param (stay) {
-            expression(item)
+    if (size(result) > 1) {
+      list-of (result) {
+        has-details (true)
+        where-each (item) {
+          layout-macro (stay-list-summary) {
+            param (stay) {
+              expression(item)
+            }
           }
+        }          
+      }
+    } else-if (size(result) == 1) {
+      layout-macro (stay-detail) {
+        param (stay) {
+          expression(result)
         }
-      }          
+      }
     }
   }
 }

@@ -1,26 +1,19 @@
 action (SelectRoom) {
   type (Search)
   description (사용자가 방 선택하여 세부 화면으로 이동)
-  collect {
-    input (stayName) {
-      type (StayName)
-      min (Required) max (One)
-    }
-    input (roomName) {
+  collect {    
+    input (roomId) {
       type (RoomName)
       min (Required) max (One)
     }
-  }
-  output (Room) {
-    on-empty {
-      replan {
-        dialog {
-          template ("방을 찾을 수 없어요. 정확한 이름으로 다시 한번 알려주시겠어요?")
-        }
-        intent {
-          goal: SelectRoom
-        }
-      }
+    input (startDate) {
+      type (StartDate)
+      min (Required) max (One)
+    }
+    input (endDate) {
+      type (EndDate)
+      min (Required) max (One)
     }
   }
+  output (Room)
 }

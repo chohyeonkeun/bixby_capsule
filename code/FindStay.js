@@ -80,10 +80,7 @@ module.exports.function = function findStay (keyword, category, priceLow, priceH
       staySaleDaysPrice : staysInfo[i].saleDaysPrice,
       staySaleHoursPrice : staysInfo[i].saleHoursPrice,
       stayDaysCheckIn : staysInfo[i].daysCheckIn,
-      dateInterval : {
-        start: start,
-        end: end
-      }
+      dateInterval : dateInterval,
     })
   }
   console.log(result)

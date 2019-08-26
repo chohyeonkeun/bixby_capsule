@@ -5,11 +5,11 @@ endpoints {
       local-endpoint (FindStay.js)
     }
     action-endpoint (SelectStay) {
-      accepted-inputs (keyword, category)
+      accepted-inputs (stayId, startDate, endDate)
       local-endpoint (SelectStay.js)
     }
     action-endpoint (SelectRoom) {
-      accepted-inputs (stayName, roomName)
+      accepted-inputs (roomId, startDate, endDate)
       local-endpoint (SelectRoom.js)
     }
   }
