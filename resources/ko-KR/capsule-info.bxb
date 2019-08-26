@@ -6,7 +6,7 @@ capsule-info {
   website-url (https://github.com/chohyeonkeun/bixby_capsule) 
   dispatch-name (숙소 검색)
   dispatch-aliases {
-    alias (숙소검색)
+    alias (숙소 검색하기)
   }
   search-keywords{
     keyword (숙소)
