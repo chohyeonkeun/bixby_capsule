@@ -1,3 +1,0 @@
-structure (EndDate) {
-  role-of (time.EndDate) 
-}

@@ -1,10 +1,12 @@
-module.exports.function = function selectRoom (roomId, startDate, endDate) {
+module.exports.function = function selectRoom (roomId, dateInterval) {
   var http = require('http')
   var console = require('console')
   var dates = require('dates')
 
+  console.log("dateInterval: "+dateInterval);
+
   // start = '2019-08-22+00:00:00'
-  start = dates.ZonedDateTime.fromDate(startDate.date).getDateTime().date
+  start = dates.ZonedDateTime.fromDate(dateInterval.start).getDateTime().date
   startYear = String(start.year);
   if (String(start.month).length == 1){
     startMonth = "0"+String(start.month);
@@ -21,7 +23,7 @@ module.exports.function = function selectRoom (roomId, startDate, endDate) {
   start = startYear + '-' + startMonth + '-' + startDay + '+00:00:00'
 
   // end = '2019-08-23+00:00:00'
-  end = dates.ZonedDateTime.fromDate(endDate.date).getDateTime().date
+  end = dates.ZonedDateTime.fromDate(dateInterval.end).getDateTime().date
   endYear = String(end.year);
   if (String(end.month).length == 1){
     endMonth = "0"+String(end.month);
@@ -37,37 +39,48 @@ module.exports.function = function selectRoom (roomId, startDate, endDate) {
   }
   end = endYear + '-' + endMonth + '-' + endDay + '+00:00:00'
 
-  var response = http.getUrl('api.yanoljamvp.com/api/stay/room/detail/'+roomId+'/?requestCheckIn='+start+'&requestCheckOut='+end, {format: 'json'})
+  var response = http.getUrl('http://api.yanoljamvp.com/api/stay/room/detail/'+roomId+'/?format=json&requestCheckIn='+start+'&requestCheckOut='+end, {format: 'json'})
   
-  const roomInfo = response.parsed
-  
-  if (roomInfo.hoursAvailable == 0){
+  if (response.hoursAvailable == 0){
     roomRentalAvailable = false
   }
   else{
-    roomRentalAvailable = roomInfo.rentalAvailable
+    roomRentalAvailable = response.rentalAvailable
   }
 
+  var roomUrlImage = response.urlImage[0]
+
+  baseImages = []
+  for(i=0; i<response.urlImage.length; i++) {
+    baseImages.push({url : response.urlImage[i]})
+  }
+  
+
   return {
-    stayName: roomInfo.stay, // string
-    roomName: roomInfo.name, // string
-    roomId: roomInfo.roomId, // integer
-    roomUrlImage : roomInfo.urlImage[0], // string
-    roomUrlImages: roomInfo.urlImage, // array
-    roomHoursPrice: roomInfo.hoursPrice, // string
-    roomHoursAvailable: roomInfo.hoursAvailable, // integer
-    roomDaysPrice: roomInfo.daysPrice, // string
-    roomSaleDaysPrice: roomInfo.saleDaysPrice, // string
-    roomSaleHoursPrice: roomInfo.saleHoursPrice, // string
-    roomDaysCheckIn: roomInfo.daysCheckIn, // integer
-    roomDaysCheckOut: roomInfo.daysCheckOut, // integer
-    roomHoursUntil: roomInfo.hoursUntil, // integer
+    stayId : response.stayId,
+    stayName: response.stay, // string
+    roomName: response.name, // string
+    roomId: response.roomId, // integer
+    roomUrlImage : roomUrlImage, // string
+    roomUrlImages: baseImages, // viv.core.BaseImage
+    roomHoursPrice: response.hoursPrice, // string
+    roomHoursAvailable: response.hoursAvailable, // integer
+    roomDaysPrice: response.daysPrice, // string
+    roomSaleDaysPrice: response.saleDaysPrice, // string
+    roomSaleHoursPrice: response.saleHoursPrice, // string
+    roomDaysCheckIn: response.daysCheckIn, // integer
+    roomDaysCheckOut: response.daysCheckOut, // integer
+    roomHoursUntil: response.hoursUntil, // integer
     roomRentalAvailable: roomRentalAvailable, //boolean
-    roomStayAvailable: roomInfo.stayAvailable,// boolean
-    roomReservedList: roomInfo.reservedList, // array
-    dateInterval : {
-      start: start,
-      end: end,
-    } 
+    roomStayAvailable: response.stayAvailable,// boolean
+    roomReservedList: response.reservedList, // array
+    dateInterval : dateInterval,
   }
 }
+
+
+
+        
+
+
+          

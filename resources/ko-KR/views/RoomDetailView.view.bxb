@@ -1,0 +1,21 @@
+result-view {
+  match {
+    Room (result)
+  }
+
+  message {
+    if (size(result) == 1) {
+      template ("#{value(result.stayName)} - #{value(result.roomName)}")
+    } 
+  }
+
+  render {
+    if (size(result) == 1) {
+      layout-macro (room-detail) {
+        param (room) {
+          expression(result)
+        }
+      }
+    }
+  }
+}

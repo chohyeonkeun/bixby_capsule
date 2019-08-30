@@ -3,15 +3,11 @@ action (SelectRoom) {
   description (사용자가 방 선택하여 세부 화면으로 이동)
   collect {    
     input (roomId) {
-      type (RoomName)
+      type (RoomId)
       min (Required) max (One)
     }
-    input (startDate) {
-      type (StartDate)
-      min (Required) max (One)
-    }
-    input (endDate) {
-      type (EndDate)
+    input (dateInterval) {
+      type (DateInterval)
       min (Required) max (One)
     }
   }

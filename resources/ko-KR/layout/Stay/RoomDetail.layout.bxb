@@ -1,6 +1,10 @@
-layout {
-  match: Room (room)
-  mode (Details)
+layout-macro-def (room-detail) {
+  params {
+    param (room) {
+      type (Room)
+      min (Required)
+    }
+  }
 
   content {
     section {
@@ -25,51 +29,48 @@ layout {
             }
           }
         }
-      }
-    }
-    section {
-      content {
         input-cell {
           label {
-            template ("Dates")          
+            template ("예약 일자")          
           }
           value ("[#{value(room.dateInterval)}]")
           on-click {
             intent {
               goal: SelectRoom          
               route: GetDateInterval
-              value: $expr (room.roomId)
-              value: $expr (room.dateInterval.start)
-              value: $expr (room.dateInterval.end)              
+              value: $expr (room.roomId)  
             }
           }
-        }
-      }
-    }
-    section {
-      title (이용 관련)
-      content {      
+        } 
         partitioned {
           content {
-            if (room.roomHoursAvailable > 0 && room.roomHoursUntil > 0 && room.roomRentalAvailable){
+            if (exists(room.roomHoursUntil) && room.roomRentalAvailable==true){
               paragraph {              
-                value ("대실: #{value(room.roomHoursPrice)}원, 최대 #{value(room.roomHoursAvailable)}시간, #{value(room.roomHoursUntil)}:00 까지")
+                value ("대실 : #{value(room.roomHoursPrice)}원, 최대 #{value(room.roomHoursAvailable)}시간, #{value(room.roomHoursUntil)}:00 까지")
                 style (Detail_M)
               } 
-            } else-if (room.roomHoursAvailable > 0 && room.roomHoursUntil > 0 && !room.roomRentalAvailable) {
+            } else-if (exists(room.roomHoursAvailable) && !exists(room.roomRentalAvailable)) {
               paragraph {
-                value ("대실: 예약마감")
+                value ("대실 : 예약마감")
                 style (Detail_M)
               }
+            } 
+            // else {
+            //   paragraph {
+            //     value ("대실 : 이용불가")
+            //     style (Detail_M)
+            //   }
+            // }
+            if (exists(room.roomDaysPrice) && exists(room.roomDaysCheckIn) && exists(room.roomDaysCheckOut)) {
+              paragraph {
+                value ("숙박 : #{value(room.roomDaysPrice)}원 / 체크인 #{value(room.roomDaysCheckIn)}시부터, 체크아웃 #{value(room.roomDaysCheckOut)}시까지")
+                style (Detail_M)
+              }            
             } else {
               paragraph {
-                value ("대실: 이용불가")
+                value ("숙박 : 이용불가")
                 style (Detail_M)
               }
-            }
-            paragraph {
-              value ("숙박: #{value(room.roomDaysPrice)}원, 체크인 #{value(room.roomDaysCheckIn)}부터, 체크아웃 #{value(room.roomDaysCheckOut)}까지")
-              style (Detail_M)
             }
           }
         }

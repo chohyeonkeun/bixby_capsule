@@ -1,0 +1,5 @@
+train (t-2judy6jwf7ohp2npoc09440ft) {
+  utterance ("[g:Review] (리뷰)[v:Review:true] 많은 순서대로 정렬해줘")
+  plan (Y2BiEM7Kzyst1itOTSxKztALSi3LTC3HLsgIhAwMPEDMBMRANgA=)
+  last-modified (1566990834724)
+}

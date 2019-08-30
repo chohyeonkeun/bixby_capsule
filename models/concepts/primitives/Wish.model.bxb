@@ -1,3 +1,4 @@
-boolean (Wish) {
+enum (Wish) {
   description (좋아요 많은 숙소 순으로 정렬)
+  symbol (true)
 }

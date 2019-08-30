@@ -1,0 +1,5 @@
+train (t-xb9g9fv5hxkubclo9o7gx21pb) {
+  utterance ("[g:FindStay] (가평)[v:SearchKeyword]에 (바베큐)[v:PopularKeyword] 할 수 있는 (펜션)[v:Category:펜션] 찾아줘")
+  plan (Y2BjEMzKzyst1itOTSxKztALLkmsZBBFEXLLzEvBIuycWJKanl9UySCJIuwCFPbMK0ktKkvMYZBGkQrILyjNSSzyTq0szy9KYZBCtRhMweRYGRgZmBiYGViALAYgGwYRgAWsAiwPAA==)
+  last-modified (1567062458499)
+}

@@ -1,0 +1,5 @@
+train (t-u05b7a760wdu09ygalsf658mi) {
+  utterance ("[g:FindStay] (저렴한)[v:PriceLow:true] 순으로 정렬해줘")
+  plan (Y2BhEMzKzyst1itOTSxKztALLkmsZBBFEXLLzEsBC0uiCLsklqR65pWkFpUl5qDpCCjKTE71yS9nYGZgZGACkgxAGgQhgAnIAooBAA==)
+  last-modified (1567061479868)
+}

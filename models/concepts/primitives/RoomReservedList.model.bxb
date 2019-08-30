@@ -1,4 +1,3 @@
-text (RoomReservedList) {
+structure (RoomReservedList) {
   description (방에 예약한 날짜들 - 다수)
-
 }

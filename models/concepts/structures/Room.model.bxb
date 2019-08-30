@@ -23,12 +23,12 @@ structure (Room) {
   property (roomMaximumPersonnel){
     description (수용 가능한 최대인원)
     type (RoomMaximumPersonnel)
-    min (Required) max (One)
+    min (Optional)
   }
   property (roomStandardPersonnel) {
     description (수용 가능한 기준인원)
     type (RoomStandardPersonnel)
-    min (Required) max (One)
+    min (Optional)
   }
   property (roomUrlImages) {
     description (방 이미지들)
@@ -38,7 +38,7 @@ structure (Room) {
   property (roomUrlImage) {
     description (방 대표 이미지)
     type (RoomUrlImage)
-    min (Required) max (Many)
+    min (Required)
   }
   property (roomHoursPrice) {
     description (방의 대실 예약가)
@@ -73,7 +73,7 @@ structure (Room) {
   property (roomDaysCheckOut) {
     description (방 숙박 체크아웃 마감시간)
     type (RoomDaysCheckOut)
-    min (Required)
+    min (Optional)
   }
   property (roomHoursUntil) {
     description (방 대실 마감시간)

@@ -1,0 +1,5 @@
+train (t-sjp3zby2mn4pxagzk9nko0bk2) {
+  utterance ("[g:FindStay] 가격 (비싼)[v:PriceHigh:true] 순으로 정렬해줘")
+  plan (Y2BhEMzKzyst1itOTSxKztALLkmsZBBFEXLLzEsBC0uiCLsklqR65pWkFpUl5jCIoUgFFGUmp3pkpmcwMDMwMjABSQYgDYIQwARkAcUA)
+  last-modified (1567061550543)
+}

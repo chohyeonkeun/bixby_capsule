@@ -1,0 +1,3 @@
+name (PopularKeyword) {
+  description (인기검색키워드 ex. 파티룸, 신축, 리모델링, 수영장)
+}

@@ -1,0 +1,10 @@
+train (t-1dyttko843a21wgobec90vvwb) {
+  utterance ("[g:FindStay] (왕십리)[v:SearchKeyword] 근처 (호텔)[v:Category:호텔] 찾아줘")
+  plan (Y2BlEMzKzyst1itOTSxKztALLkmsZBBFEXLLzEvBIuycWJKanl9UySCJIuwCFPbMK0ktKkvMYZBCNRtMeadWlucXpTCwMDAyMDEwA2kGIAsCYYAZLAeUAQA=)
+  last-modified (1567062325152)
+}
+train (t-1ft02zi6td5ni513ryofp2ro0) {
+  utterance ("[g:FindStay] (강남역)[v:SearchKeyword] 근처 (모텔)[v:Category:모텔] 찾아줘")
+  plan (Y2BlEMzKzyst1itOTSxKztALLkmsZBBFEXLLzEvBIuycWJKanl9UySCJIuwCFPbMK0ktKkvMYZBCNRtMeadWlucXpTCwMDAyMDEwA2kGIAsCYYAZLAeUAQA=)
+  last-modified (1567062322912)
+}

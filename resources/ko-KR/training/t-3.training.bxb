@@ -1,0 +1,10 @@
+train (t-30n3ehpztqqyyr1pinzqct4zf) {
+  utterance ("[g:FindStay] (찜)[v:Wish:true] 많은 순으로 정렬해줘")
+  plan (Y2BhEMzKzyst1itOTSxKztALLkmsZBBFEXLLzEsBC0uiCLsklqR65pWkFpUl5qAZEp5ZnMHAzMDIwAQkGYA0CEIAE5AFFAMA)
+  last-modified (1567061506585)
+}
+train (t-3hycw2h0h1kp6koykxfi0x8kq) {
+  utterance ("[g:Wish] (좋아요)[v:Wish:true] 많은 순서대로 정렬해줘")
+  plan (Y2BiEMzKzyst1itOTSxKztALzyzOwCbECIQMDDxAzATEQDYA)
+  last-modified (1566990862844)
+}

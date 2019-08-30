@@ -2,8 +2,12 @@ action (FindStay) {
   type (Search)
   description (사용자가 원하는 숙소들 검색)
   collect {
-    input (keyword) {
-      type (Keyword)
+    input (searchKeyword) {
+      type (SearchKeyword)
+      min (Optional) max (One)
+    }
+    input (popularKeyword) {
+      type (PopularKeyword)
       min (Optional) max (One)
     }
     input (category) {
@@ -24,6 +28,10 @@ action (FindStay) {
     }
     input (wish) {
       type (Wish)
+      min (Optional) max (One)
+    }
+    input (stayId) {
+      type (StayId)
       min (Optional) max (One)
     }
     input (dateInterval) {

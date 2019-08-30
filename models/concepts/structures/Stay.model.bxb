@@ -43,7 +43,7 @@ structure (Stay) {
   property (stayIntroduce) {
     description (숙소 소개)
     type (StayIntroduce)
-    min (Required)
+    min (Required) max (Many)
   }
   property (staySaleDaysPrice) {
     description (숙소 목록에서 조회될 숙박비가 가장 저렴한 방의 숙박 할인 예약가)
@@ -62,7 +62,7 @@ structure (Stay) {
   }
   property (room) {
     description (숙소의 방 객체들)
-    min (Required)
+    min (Required) max (Many)
     type(Room)
   }
   property (dateInterval) {

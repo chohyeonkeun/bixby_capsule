@@ -1,0 +1,5 @@
+train (t-bjavunwg5136erjl2eg8p5mdc) {
+  utterance ("[g:FindStay] (예약가 낮은)[v:PriceLow:true] 순으로 정렬해줘")
+  plan (Y2BhEMzKzyst1itOTSxKztALLkmsZBBFEXLLzEsBC0uiCLsklqR65pWkFpUl5qDpCCjKTE71yS9nYGZgZGACkgxAGgQhgAnIAooBAA==)
+  last-modified (1567061422776)
+}

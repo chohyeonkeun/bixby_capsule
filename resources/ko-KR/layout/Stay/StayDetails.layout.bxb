@@ -1,0 +1,116 @@
+layout-macro-def (stay-details) {
+  params {
+    param (stay) {
+      type (Stay)
+      min (Required)
+      max (Many)
+    }
+  }
+  content {
+    section {
+      content {
+        image ("#{value(stay.stayMainUrlImage)}")
+        title-area {
+          halign (Center)
+          // •
+          slot1 {
+            text {
+              value ("#{value(stay.stayName)}")
+              style (Title_L)
+            }
+          }
+          
+          slot2 {
+            if (exists(stay.stayLocation)) {
+              single-line {
+                text {                
+                    value ("#{value(stay.stayLocation)}")
+                    style (Detail_M_Soft)
+                }
+              }
+            } else {
+              single-line {
+                text {
+                  value ("위치정보 없음")
+                  style (Detail_M_Soft)
+                }
+              }
+            }
+          }         
+        }
+        input-cell {
+          label {
+            template ("예약 일자")          
+          }
+          value ("[#{value(stay.dateInterval)}]")
+          // DateInterval 부분 클릭하여 날짜 수정 후, 수정한 날짜로 SelectStay Goal 실행
+          on-click {
+            intent {
+              goal: FindStay           
+              route: GetDateInterval                 
+              value : $expr (stay.stayId)                 
+            }
+          }
+        }
+        // 해당 숙소에 대한 여러개의 방 목록을 보여줌 (ex. 일반실, 준특실, 특실)
+        for-each (stay.room) {
+          as (attribute) {
+          //   layout-macro (room-list-summary) {
+          //     param (room) {
+          //       expression(attribute)
+          //     }
+          //   }
+          // }
+            thumbnail-card {
+              image-position (Start)
+              image-url ("#{value(attribute.roomUrlImage)}")
+              title-area {
+                halign (Start)
+                slot1 {
+                  text {
+                    value ("#{value(attribute.roomName)}")
+                    style (Title_S)
+                  }
+                }
+                slot2 {
+                  single-line {
+                    if (exists(attribute.roomStandardPersonnel) && exists(attribute.roomMaximumPersonnel)) {
+                      text{
+                        value ("기준 #{value(attribute.roomStandardPersonnel)}명 / 최대 #{value(attribute.roomMaximumPersonnel)}명")
+                        style (Detail_M_Soft)
+                      }
+                    }
+                  }
+                }
+                slot3 {
+                  paragraph {
+                    value {        
+                      if (exists(attribute.roomHoursAvailable) && exists(attribute.roomRentalAvailable) && exists(attribute.roomHoursPrice) && exists(attribute.roomDaysPrice) && exists(attribute.roomDaysCheckIn)) {
+                        // 방의 대실 이용시간(roomHoursAvailable, int type)과 방의 대실 이용가능여부(roomRentalAvailable, boolean type) 데이터가 있는 경우
+                        template ("대실 #{value(attribute.roomHoursPrice)}원 / 숙박 #{value(attribute.roomDaysPrice)}원")
+                      } else-if (exists(attribute.roomHoursAvailable) && !exists(attribute.roomRentalAvailable) && exists(attribute.roomDaysPrice) && exists(attribute.roomDaysCheckIn)) {
+                        // 방의 대실 이용시간(roomHoursAvailable, int type)은 존재하나, 방의 대실 이용가능여부(roomResntalAvailable, boolean type)가 false인 경우
+                        template ("대실 예약 마감 / 숙박 #{value(attribute.roomDaysPrice)}원")
+                      } // else-if (exists(attribute.roomDaysPrice) && attribute.roomDaysCheckIn > 0) { 
+                      //   // 방의 대실 이용시간(attribute.roomHoursAvailable, int type)이 존재하지 않는 경우
+                      //   template ("대실 이용 불가 / 숙박 #{value(attribute.roomDaysPrice)}원")
+                      // }
+                    }
+                    style (Detail_L)
+                  }
+                }
+              }
+              on-click {
+                intent {
+                  goal : SelectRoom
+                  value : $expr (attribute.roomId)
+                  value : $expr (attribute.dateInterval)
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

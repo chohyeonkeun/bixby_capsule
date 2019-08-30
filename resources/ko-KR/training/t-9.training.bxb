@@ -1,0 +1,5 @@
+train (t-92sevnqj7c4xmrd9fcm6tn1k7) {
+  utterance ("[g:FindStay] (후기)[v:Review:true] 많은 순으로 정렬해줘")
+  plan (Y2BhEMzKzyst1itOTSxKztALLkmsZBBFEXLLzEsBC0uiCLsklqR65pWkFpUl5jAIo0gFpZZlppYzMDMwMjABSQYgDYIQwARkAcUA)
+  last-modified (1567065681473)
+}

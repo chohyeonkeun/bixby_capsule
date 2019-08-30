@@ -1,0 +1,5 @@
+train (t-ao2yfmn2c4kylyht56q5a0nvv) {
+  utterance ("[g:Review] (평점)[v:Review:true] 많은 순서대로 정렬해줘")
+  plan (Y2BiEM7Kzyst1itOTSxKztALSi3LTC3HLsgIhAwMPEDMBMRANgA=)
+  last-modified (1566990943346)
+}

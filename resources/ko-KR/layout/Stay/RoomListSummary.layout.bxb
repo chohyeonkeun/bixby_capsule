@@ -8,7 +8,7 @@ layout-macro-def (room-list-summary) {
   content {    
     thumbnail-card {
       image-position (Start)
-      image-url ("#{value(room.roomUrlImage[0])}")
+      image-url ("#{value(room.roomUrlImage)}")
       title-area {
         halign (Start)
         slot1 {
@@ -19,21 +19,26 @@ layout-macro-def (room-list-summary) {
         }
         slot2 {
           single-line {
-            text{
-              value ("#{value(room.roomStandardPersonnel)} / #{value(room.roomMaximumPersonnel)}")
-              style (Detail_M_Soft)
+            if (exists(room.roomStandardPersonnel) && exists(room.roomMaximumPersonnel)) {
+              text{
+                value ("기준 #{value(room.roomStandardPersonnel)}명 / 최대 #{value(room.roomMaximumPersonnel)}명")
+                style (Detail_M_Soft)
+              }
             }
           }
         }
         slot3 {
           paragraph {
-            value {
-              if (exists(room.roomHoursAvailable) && exists(room.roomRentalAvailable)) {
-                template ("대실 #{value(room.roomHoursPrice)}원 (최대 #{value(room.roomHoursAvailable)}시간) / 숙박 #{value(room.roomDaysPrice)}원 (#{value(room.roomDaysCheckIn)}부터)")
+            value {        
+              if (exists(room.roomRentalAvailable) && exists(room.roomHoursPrice)) {
+                // 방의 대실 이용시간(roomHoursAvailable, int type)이 0보다 크고, 방의 대실 이용가능여부(roomRentalAvailable, boolean type) 데이터가 있는 경우
+                template ("대실 #{value(room.roomHoursPrice)}원 / 숙박 #{value(room.roomDaysPrice)}원")
               } else-if (exists(room.roomHoursAvailable) && !exists(room.roomRentalAvailable)) {
-                template ("대실 예약 마감 / 숙박 #{value(room.roomDaysPrice)}원 (#{value(room.roomDaysCheckIn)}부터)")
+                // 방의 대실 이용시간(roomHoursAvailable, int type)이 0보다 크나, 방의 대실 이용가능여부(roomResntalAvailable, boolean type)가 false인 경우
+                template ("대실 예약 마감 / 숙박 #{value(room.roomDaysPrice)}원")
               } else { 
-                template ("대실 이용불가 / 숙박 #{value(room.roomDaysPrice)}원 (#{value(room.roomDaysCheckIn)}부터)")
+                // 방의 대실 이용시간(room.roomHoursAvailable, int type)이 존재하지 않는 경우
+                template ("숙박 #{value(room.roomDaysPrice)}원")
               }
             }
             style (Detail_L)
@@ -42,10 +47,9 @@ layout-macro-def (room-list-summary) {
       }
       on-click {
         intent {
-          goal: SelectRoom
-          value: $expr (room.roomId)
-          value: $expr (room.dateInterval.start)
-          value: $expr (room.dateInterval.end)         
+          goal : SelectRoom
+          value : $expr (room.roomId)
+          value : $expr (room.dateInterval)
         }
       }
     }
