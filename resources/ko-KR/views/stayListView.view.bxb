@@ -45,6 +45,8 @@ result-view {
           expression(result)
         }
       }
+    } else {
+      nothing
     }
   }
 }

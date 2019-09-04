@@ -1,0 +1,5 @@
+train (t-v4xzxp9x2kfq43jpmib88rnc5) {
+  utterance ("[g:FindStay] (서울)[v:SearchKeyword]에 (수영장)[v:PopularKeyword] 있는 (호텔)[v:Category:호텔] 찾아줘")
+  plan (Y2BjEMzKzyst1itOTSxKztALLkmsZBBFEXLLzEvBIuycWJKanl9UySCJIuwCFPbMK0ktKkvMYZBGkQrILyjNSSzyTq0szy9KYZBCtRhMweRYGRgZmBiYGViALAYgGwYRgAWsAiwPAA==)
+  last-modified (1567232417446)
+}

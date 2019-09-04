@@ -85,16 +85,16 @@ layout-macro-def (stay-details) {
                 slot3 {
                   paragraph {
                     value {        
-                      if (exists(attribute.roomHoursAvailable) && exists(attribute.roomRentalAvailable) && exists(attribute.roomHoursPrice) && exists(attribute.roomDaysPrice) && exists(attribute.roomDaysCheckIn)) {
+                      if (attribute.roomHoursAvailable > 0 && exists(attribute.roomRentalAvailable) && attribute.roomRentalAvailable==true && exists(attribute.roomHoursPrice)) {
                         // 방의 대실 이용시간(roomHoursAvailable, int type)과 방의 대실 이용가능여부(roomRentalAvailable, boolean type) 데이터가 있는 경우
                         template ("대실 #{value(attribute.roomHoursPrice)}원 / 숙박 #{value(attribute.roomDaysPrice)}원")
-                      } else-if (exists(attribute.roomHoursAvailable) && !exists(attribute.roomRentalAvailable) && exists(attribute.roomDaysPrice) && exists(attribute.roomDaysCheckIn)) {
+                      } else-if (attribute.roomHoursAvailable > 0 && exists(attribute.roomRentalAvailable) && attribute.roomRentalAvailable==false) {
                         // 방의 대실 이용시간(roomHoursAvailable, int type)은 존재하나, 방의 대실 이용가능여부(roomResntalAvailable, boolean type)가 false인 경우
                         template ("대실 예약 마감 / 숙박 #{value(attribute.roomDaysPrice)}원")
-                      } // else-if (exists(attribute.roomDaysPrice) && attribute.roomDaysCheckIn > 0) { 
-                      //   // 방의 대실 이용시간(attribute.roomHoursAvailable, int type)이 존재하지 않는 경우
-                      //   template ("대실 이용 불가 / 숙박 #{value(attribute.roomDaysPrice)}원")
-                      // }
+                      } else { 
+                        // 방의 대실 이용시간(attribute.roomHoursAvailable, int type)이 존재하지 않는 경우
+                        template ("숙박 #{value(attribute.roomDaysPrice)}원")
+                      }
                     }
                     style (Detail_L)
                   }

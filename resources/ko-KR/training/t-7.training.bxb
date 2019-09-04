@@ -1,0 +1,10 @@
+train (t-7h53jtw0y4thzst8emc7qvutm) {
+  utterance ("[g:FindStay] (서울)[v:SearchKeyword]에 (파티)[v:PopularKeyword]할 수 있는 (모텔)[v:Category:모텔] 찾아줘")
+  plan (Y2BjEMzKzyst1itOTSxKztALLkmsZBBFEXLLzEvBIuycWJKanl9UySCJIuwCFPbMK0ktKkvMYZBGkQrILyjNSSzyTq0szy9KYZBCtRhMweRYGRgZmBiYGViALAYgGwYRgAWsAiwPAA==)
+  last-modified (1567232728316)
+}
+train (t-7jpwczwu754hk3e49wd4frypx) {
+  utterance ("[g:FindStay] (서울)[v:SearchKeyword]에 (파티)[v:PopularKeyword]할 수 있는 (게스트하우스)[v:Category:게스트하우스] 찾아줘")
+  plan (Y2BjEMzKzyst1itOTSxKztALLkmsZBBFEXLLzEvBIuycWJKanl9UySCJIuwCFPbMK0ktKkvMYZBGkQrILyjNSSzyTq0szy9KYZBCtRhMweRYGRgZmBiYGViALAYgGwYRgAWsAiwPAA==)
+  last-modified (1567232936119)
+}

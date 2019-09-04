@@ -1,6 +1,6 @@
 capsule {
   id (jonus.search)
-  version (0.1.0)
+  version (5.85.7)
   format (3)
   targets {
     target (bixby-mobile-ko-KR)

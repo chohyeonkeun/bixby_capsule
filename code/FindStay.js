@@ -48,7 +48,7 @@ module.exports.function = function findStay (searchKeyword, popularKeyword, cate
     // stayId를 전달받지 않고, 일반 발화에 의해 결과값 산출
     var url = 'http://api.yanoljamvp.com/api/stay/?format=json&requestCheckIn='+start+'&requestCheckOut='+end;
     // 강남역, 역삼역, 논현동 등과 같은 searchKeyword를 전달받는 경우
-    if (searchKeyword) {
+    if (searchKeyword) {      
       url = url + '&searchKeyword=' + searchKeyword
     }
     // 수영장, 파티룸, 신축, 리모델링 같은 popularKeyword를 전달받는 경우
@@ -64,7 +64,7 @@ module.exports.function = function findStay (searchKeyword, popularKeyword, cate
       url = url + '&priceLow=' + priceLow
     }
     // 예약가 높은 순 정렬 시, priceHigh = true로 데이터 전달받는 경우
-    if (priceHigh) {
+    if (priceHigh) {    
       url = url + '&priceHigh=' + priceHigh
     }
     // 좋아요 많은 순 정렬 시, wish = true로 데이터 전달받는 경우
@@ -76,6 +76,7 @@ module.exports.function = function findStay (searchKeyword, popularKeyword, cate
       url = url + '&review=' + review
     }
   }
+  console.log(url);
 
   var response = http.getUrl(url, {format: 'json'});
 

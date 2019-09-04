@@ -30,10 +30,10 @@ layout-macro-def (room-list-summary) {
         slot3 {
           paragraph {
             value {        
-              if (exists(room.roomRentalAvailable) && exists(room.roomHoursPrice)) {
+              if (room.roomHoursAvailable > 0 && exists(room.roomRentalAvailable) && room.roomRentalAvailable == true) {
                 // 방의 대실 이용시간(roomHoursAvailable, int type)이 0보다 크고, 방의 대실 이용가능여부(roomRentalAvailable, boolean type) 데이터가 있는 경우
                 template ("대실 #{value(room.roomHoursPrice)}원 / 숙박 #{value(room.roomDaysPrice)}원")
-              } else-if (exists(room.roomHoursAvailable) && !exists(room.roomRentalAvailable)) {
+              } else-if (room.roomHoursAvailable > 0 && exists(room.roomRentalAvailable) && room.roomRentalAvailable == false) {
                 // 방의 대실 이용시간(roomHoursAvailable, int type)이 0보다 크나, 방의 대실 이용가능여부(roomResntalAvailable, boolean type)가 false인 경우
                 template ("대실 예약 마감 / 숙박 #{value(room.roomDaysPrice)}원")
               } else { 

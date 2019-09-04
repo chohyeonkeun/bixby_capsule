@@ -44,12 +44,12 @@ layout-macro-def (room-detail) {
         } 
         partitioned {
           content {
-            if (exists(room.roomHoursUntil) && room.roomRentalAvailable==true){
+            if (room.roomHoursUntil > 0 && room.roomRentalAvailable==true){
               paragraph {              
                 value ("대실 : #{value(room.roomHoursPrice)}원, 최대 #{value(room.roomHoursAvailable)}시간, #{value(room.roomHoursUntil)}:00 까지")
                 style (Detail_M)
               } 
-            } else-if (exists(room.roomHoursAvailable) && !exists(room.roomRentalAvailable)) {
+            } else-if (room.roomHoursAvailable > 0 && room.roomRentalAvailable==false) {
               paragraph {
                 value ("대실 : 예약마감")
                 style (Detail_M)
@@ -61,7 +61,7 @@ layout-macro-def (room-detail) {
             //     style (Detail_M)
             //   }
             // }
-            if (exists(room.roomDaysPrice) && exists(room.roomDaysCheckIn) && exists(room.roomDaysCheckOut)) {
+            if (exists(room.roomDaysPrice) && room.roomDaysCheckIn>0 && room.roomDaysCheckOut>0) {
               paragraph {
                 value ("숙박 : #{value(room.roomDaysPrice)}원 / 체크인 #{value(room.roomDaysCheckIn)}시부터, 체크아웃 #{value(room.roomDaysCheckOut)}시까지")
                 style (Detail_M)

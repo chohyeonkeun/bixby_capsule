@@ -3,3 +3,8 @@ train (t-ao2yfmn2c4kylyht56q5a0nvv) {
   plan (Y2BiEM7Kzyst1itOTSxKztALSi3LTC3HLsgIhAwMPEDMBMRANgA=)
   last-modified (1566990943346)
 }
+train (t-azycfkey7fr9o4ah4w90esgl3) {
+  utterance ("[g:FindStay] (서울)[v:SearchKeyword]에 (할인)[v:PopularKeyword]하고 있는 (호텔)[v:Category:호텔] 알려줘")
+  plan (Y2BjEMzKzyst1itOTSxKztALLkmsZBBFEXLLzEvBIuycWJKanl9UySCJIuwCFPbMK0ktKkvMYZBGkQrILyjNSSzyTq0szy9KYZBCtRhMweRYGRgZmBiYGViALAYgGwYRgAWsAiwPAA==)
+  last-modified (1567572729224)
+}
