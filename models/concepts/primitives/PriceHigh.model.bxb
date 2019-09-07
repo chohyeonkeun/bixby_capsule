@@ -1,4 +1,5 @@
 enum (PriceHigh) {
   description (예약가 높은 순 정렬)
   symbol (true)
+  features {transient}
 }
